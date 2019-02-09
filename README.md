@@ -30,7 +30,9 @@ cp settings.py.tmpl settings.py
 
 Täytä puuttuvat kohdat `settings.py` -tiedostoon. Löydät ne hakemalla sanaa "TODO".
 
-Pystytä sitten tietokanta (mallikonfiguraatiossa käytetään paikkallista sqlite-kantaa):
+Pystytä sitten tietokanta (mallikonfiguraatiossa käytetään paikkallista sqlite-kantaa). Huomaa,
+että kätevyyden vuoksi `manage.py` viittaa paikallisen ympäristömme python-komentoon, eikä
+sitä tarvitse erikseen sanoa tässä:
 ```
 cd ~/sites/<tunnus>.kapsi.fi/kapsi-django-ohje/
 ./manage.py migrate
