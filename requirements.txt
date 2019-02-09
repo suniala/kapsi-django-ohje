@@ -1,0 +1,7 @@
+# Yleiset Django-riippuvuudet
+Django==2.0
+gunicorn
+
+# django-wikin riippuvuudet
+Pillow
+wiki==0.4.4
