@@ -28,7 +28,7 @@ cd ~/sites/<tunnus>.kapsi.fi/kapsi-django-ohje/
 cp kirja/settings.py.tmpl kirja/settings.py
 ```
 
-Täytä puuttuvat kohdat `settings.py` -tiedostoon. Löydät ne hakemalla sanaa "TODO".
+Täytä puuttuvat kohdat `kirja/settings.py` -tiedostoon. Löydät ne hakemalla sanaa "TODO".
 
 Pystytä sitten tietokanta (mallikonfiguraatiossa käytetään paikkallista sqlite-kantaa). Huomaa,
 että kätevyyden vuoksi `manage.py` viittaa paikallisen ympäristömme python-komentoon, eikä
@@ -38,16 +38,17 @@ cd ~/sites/<tunnus>.kapsi.fi/kapsi-django-ohje/
 ./manage.py migrate
 ```
 
-Käynnistä sitten sovelluspalvelin:
+Käynnistä sitten sovelluspalvelin. Tässä vaiheessa voit arpoa porttinumeron itse 30000 ja 40000 väliltä:
 ```
-../env/bin/gunicorn \
+env/bin/gunicorn \
     --bind webapp1.n.kapsi.fi:<portti> \
-    --chdir /home/users/<tunnus>/sites/<tunnus>.kapsi.fi/kapsi-django-ohje/kirja/kirja wsgi
+    --chdir /home/users/<tunnus>/sites/<tunnus>.kapsi.fi/kapsi-django-ohje/kirja wsgi
 ```
 
-Jos gunicorn käynnistyy ilman virheitä, pitäisi sovellukseen päästä kiinni kapsin sisältä:
+Jos gunicorn käynnistyy ilman virheitä, pitäisi sovellukseen päästä kiinni Kapsin sisältä,
+esimerkiksi lakka-palvelimelta:
 ```
-curl http://webapp1.n.kapsi.fi:<portti>
+lynx http://webapp1.n.kapsi.fi:<portti>/kapsi-django-ohje/
 ```
 
 Voit nyt sammuttaa gunicornin niin jatketaan säätämistä.
@@ -73,7 +74,8 @@ RewriteCond %{REQUEST_URI} ^/kapsi-django-ohje(.*)$
 RewriteRule ^(.*)$ http://webapp1.n.kapsi.fi:<portti>/$1 [P]
 ```
 
-Käynnistä gunicorn ja mene selaimella osoitteeseen: http://<tunnus>.kapsi.fi/kapsi-django-ohje
+Käynnistä gunicorn käyttäen saamaasi porttinumeroa ja mene selaimella osoitteeseen:
+http://<tunnus>.kapsi.fi/kapsi-django-ohje
 
 Tässä kohti kuvat ja tyylit vielä puuttuvat sivulta. Jos näyttää muuten toimivalta, niin tehdään
 vielä viimeiset silaukset.
@@ -105,6 +107,7 @@ näkyy tyylit ja kuvat oikein. Kirjaudu sisään, luo uusi sivu, lataa sinne kuv
 tarkista, että kuva näkyy tallennetulla sivulla. Näin varmistat, että myös media-hakemisto toimii.
 
 Kokeile myös, että ylläpitosivusto toimii: http://<tunnus>.kapsi.fi/kirja/yllapito
+
 
 ## Sovelluspalvelimen ajaminen taustalla
 
