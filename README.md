@@ -25,7 +25,7 @@ env/bin/pip install -r requirements.txt
 Laita sovelluksen asetukset kuntoon. Kopioi mallista oma asetustiedostosi:
 ```
 cd ~/sites/<tunnus>.kapsi.fi/kapsi-django-ohje/
-cp settings.py.tmpl settings.py
+cp kirja/settings.py.tmpl kirja/settings.py
 ```
 
 Täytä puuttuvat kohdat `settings.py` -tiedostoon. Löydät ne hakemalla sanaa "TODO".
