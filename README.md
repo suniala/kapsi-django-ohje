@@ -11,19 +11,20 @@ git clone https://github.com/suniala/kapsi-django-ohje.git
 
 Luo paikallinen Python-ympäristö:
 ```
+cd kapsi-django-ohje
 virtualenv -p python3.4 env
 ```
 
 Asenna paikalliseen ympäristöön Django ja django-wiki:
 ```
-env/bin/pip install -r kapsi-django-ohje/wiki/requirements.txt
+env/bin/pip install -r requirements.txt
 ```
 
 ## Kokeile sovellusta
 
 Laita sovelluksen asetukset kuntoon. Kopioi mallista oma asetustiedostosi:
 ```
-cd ~/sites/<tunnus>.kapsi.fi/kapsi-django-ohje/wiki
+cd ~/sites/<tunnus>.kapsi.fi/kapsi-django-ohje/
 cp settings.py.tmpl settings.py
 ```
 
@@ -39,10 +40,10 @@ Käynnistä sitten sovelluspalvelin:
 ```
 ../env/bin/gunicorn \
     --bind webapp1.n.kapsi.fi:<portti> \
-    --chdir /home/users/<tunnus>/sites/<tunnus>.kapsi.fi/kapsi-django-ohje/wiki/wiki wsgi
+    --chdir /home/users/<tunnus>/sites/<tunnus>.kapsi.fi/kapsi-django-ohje/kirja/kirja wsgi
 ```
 
-Jos gunicorn käynnistyy ilman virheitä, pitäisi wiki-sivustoon päästä kiinni kapsin sisältä:
+Jos gunicorn käynnistyy ilman virheitä, pitäisi sovellukseen päästä kiinni kapsin sisältä:
 ```
 curl http://webapp1.n.kapsi.fi:<portti>
 ```
@@ -50,7 +51,7 @@ curl http://webapp1.n.kapsi.fi:<portti>
 Voit nyt sammuttaa gunicornin niin jatketaan säätämistä.
 
 
-## Pääsy wikiin internetistä
+## Pääsy sovellukseen internetistä
 
 Internetistä ei pääse webapp1-palvelimella pyörivään sovellukseen suoraan käsiksi.
 
@@ -97,10 +98,11 @@ django-wikiin. Luo tunnus:
 ./manage.py createsuperuser --username=<jokutunnus> --email=<jokusähköpostiosoite>
 ```
 
-Tässä kohtaa kannattaa kokeilla gunicornin käynnistämistä uudestaan ja varmistaa, että wikissä
-näkyy tyylit ja kuvat oikein. Kirjaudu wikiin, luo uusi sivu, lataa sinne kuvatiedosto ja
+Tässä kohtaa kannattaa kokeilla gunicornin käynnistämistä uudestaan ja varmistaa, että sivustolla
+näkyy tyylit ja kuvat oikein. Kirjaudu sisään, luo uusi sivu, lataa sinne kuvatiedosto ja
 tarkista, että kuva näkyy tallennetulla sivulla. Näin varmistat, että myös media-hakemisto toimii.
 
+Kokeile myös, että ylläpitosivusto toimii: http://<tunnus>.kapsi.fi/kirja/yllapito
 
 ## Sovelluspalvelimen ajaminen taustalla
 
