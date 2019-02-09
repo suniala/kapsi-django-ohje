@@ -1,6 +1,14 @@
 # Django-sovellusten asentaminen Kapsiin
 
 
+## Kirjaudu webapp1-palvelimelle
+
+Aja kaikki komennot webapp1-palvelimella, ellei muuta mainita.
+```
+ssh <tunnus>@webapp1.kapsi.fi
+```
+
+
 ## Ympäristön pystytys
 
 Kloonaa tämä repo sites-hakemistoosi:
