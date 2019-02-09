@@ -1,4 +1,14 @@
-# Django-sovellusten asentaminen Kapsiin
+# Django-sovellusten ajaminen Kapsissa
+
+Tämä ohje kuvaa yhden tavan ajaa [Django](https://www.djangoproject.com/)-sovelluksia 
+[Kapsissa](https://www.kapsi.fi/). Ohjeessa on huomioitu 
+[vuoden 2017 verkkosivu-uudistuksen](https://www.kapsi.fi/ohjeet/web2.html) tuomat muutokset.
+
+Tässä ohjeessa pystytetään [django-wiki](https://github.com/django-wiki/django-wiki) julkiseen osoitteeseen
+`http://<tunnus>.kapsi.fi/kapsi-django-ohje`.
+
+Pythonin, Djangon ja muiden kirjastojen versiot on valittu niin, että ne toimivat Kapsissa. Huolehdi itse, 
+että "tuotantokäytössä" kirjastot ovat ajan tasalla niin vältyt tietoturvaongelmilta.
 
 
 ## Kirjaudu webapp1-palvelimelle
@@ -83,7 +93,7 @@ RewriteRule ^(.*)$ http://webapp1.n.kapsi.fi:<portti>/$1 [P]
 ```
 
 Käynnistä gunicorn käyttäen saamaasi porttinumeroa ja mene selaimella osoitteeseen:
-http://<tunnus>.kapsi.fi/kapsi-django-ohje
+`http://<tunnus>.kapsi.fi/kapsi-django-ohje?`
 
 Tässä kohti kuvat ja tyylit vielä puuttuvat sivulta. Jos näyttää muuten toimivalta, niin tehdään
 vielä viimeiset silaukset.
@@ -114,9 +124,14 @@ Tässä kohtaa kannattaa kokeilla gunicornin käynnistämistä uudestaan ja varm
 näkyy tyylit ja kuvat oikein. Kirjaudu sisään, luo uusi sivu, lataa sinne kuvatiedosto ja
 tarkista, että kuva näkyy tallennetulla sivulla. Näin varmistat, että myös media-hakemisto toimii.
 
-Kokeile myös, että ylläpitosivusto toimii: http://<tunnus>.kapsi.fi/kirja/yllapito
+Kokeile myös, että ylläpitosivusto toimii: `http://<tunnus>.kapsi.fi/kirja/yllapito`
 
 
 ## Sovelluspalvelimen ajaminen taustalla
 
 TODO
+
+
+## Palaute
+
+Palaute on tervetullutta vaikkapa Githubin kautta (issues, pull requests).
