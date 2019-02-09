@@ -13,9 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+sub_patterns = [
+    # Djangon ylläpitosivusto
+    path('yllapito/', admin.site.urls),
+    # django-wikin tarvitsemat polut
+    path('notifications/', include('django_nyt.urls')),
+    path('', include('wiki.urls')),
+]
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # Yksinkertaistetaan konfiguraatiota pistämällä kaikki sovelluksen polut URL_PREFIX alle
+    # include-funktion avulla.
+    path(r'' + settings.URL_PREFIX, include(sub_patterns)),
 ]
