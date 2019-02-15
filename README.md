@@ -60,7 +60,9 @@ Käynnistä sitten sovelluspalvelin. Tässä vaiheessa voit arpoa porttinumeron 
 ```
 env/bin/gunicorn \
     --bind webapp1.n.kapsi.fi:<portti> \
-    --chdir /home/users/<tunnus>/sites/<tunnus>.kapsi.fi/kapsi-django-ohje/kirja wsgi
+    --chdir ~/sites/<tunnus>.kapsi.fi/kapsi-django-ohje \
+    --pythonpath kirja \
+    wsgi
 ```
 
 Jos gunicorn käynnistyy ilman virheitä, pitäisi sovellukseen päästä kiinni Kapsin sisältä,
@@ -105,8 +107,8 @@ vielä viimeiset silaukset.
 Luo hakemistot tiedostojen jakamista varten. Nämä voi nimetä miten vaan mutta tässä on ollut
 ajatuksena, että static ja media-hakemistojen alla voisi olla useammankin sovelluksen tiedostoja:
 ```
-mkdir -p /home/users/<tunnus>/sites/<tunnus>.kapsi.fi/www/static/kapsi-django-ohje/
-mkdir -p /home/users/<tunnus>/sites/<tunnus>.kapsi.fi/www/media/kapsi-django-ohje/
+mkdir -p ~/sites/<tunnus>.kapsi.fi/www/static/kapsi-django-ohje/
+mkdir -p ~/sites/<tunnus>.kapsi.fi/www/media/kapsi-django-ohje/
 ```
 
 Julkaise Django-sovelluksen tarvitsemat staattiset tiedostot:
