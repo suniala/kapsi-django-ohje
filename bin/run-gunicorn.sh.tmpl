@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Flock huolehtii siitä, että prosessi ajetaan vain kerran.
+flock \
+  # Eksklusiivinen lukko, eli vain yksi prosessi voi saada sen.
+  --exclusive \
+  # Jos lukkoa ei saada, lopeta.
+  --nonblock \
+  # Jos lukkoa ei saatu, palauta 0, eli "ei virhettä".
+  --conflict-exit-code 0 \
+  # Kirjoita lukko tähän tiedostoon.
+  ~/.lock/django-serve \
+  ~/sites/<tunnus>.kapsi.fi/kapsi-django-ohje/env/bin/gunicorn \
+    --bind webapp1.n.kapsi.fi:<portti> \
+    --chdir ~/sites/<tunnus>.kapsi.fi/kapsi-django-ohje \
+    --pythonpath kirja \
+    wsgi

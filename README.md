@@ -132,8 +132,22 @@ Kokeile myös, että ylläpitosivusto toimii: `https://<tunnus>.kapsi.fi/kapsi-d
 
 ## Sovelluspalvelimen ajaminen taustalla
 
-TODO
+Käynnistetään sovelluspalvelin cronilla. Kopioi malliskripti:
+```
+cd ~/sites/<tunnus>.kapsi.fi/kapsi-django-ohje/
+cp bin/run-gunicorn.sh.tmpl bin/run-gunicorn.sh
+```
 
+Muokkaa skriptiin puuttuvat tiedot. Luo myös flock-komennon tarvitsema hakemisto:
+```
+mkdir ~/.lock
+```
+
+Ajasta skriptin ajo. Ajastus voidaan tehdä vaikka jokaiselle minuutille koska skripti huolehtii
+siitä, että gunicorn käynnistetään vain kerran. Aja `crontab -e` ja täydennä:
+```
+* * * * * ~/sites/<tunnus>.kapsi.fi/kapsi-django-ohje/bin/run-gunicorn.sh
+```
 
 ## Palaute
 
