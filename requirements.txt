@@ -1,7 +1,9 @@
-# Yleiset Django-riippuvuudet
+# Kapsin uusimman Python 3:n kanssa yhteensopivat riippuvuudet
+
+# Django
 Django < 2.1
 gunicorn
 
-# django-wikin riippuvuudet
+# django-wiki
 Pillow
 wiki < 0.5

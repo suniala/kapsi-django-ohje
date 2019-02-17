@@ -1,0 +1,9 @@
+# Python 3.7 -yhteensopivat riippuvuudet
+
+# Django
+Django < 2.2
+gunicorn
+
+# django-wiki
+Pillow
+wiki < 0.5
